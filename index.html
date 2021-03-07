@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Super Mario</title>
+    <link rel="icon" type="image/png" href="img/marioIcon.png" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div align="left">
+        <h1 class="title">
+          <font color="#009fde">S</font><font color="#fed302">U</font
+          ><font color="#e42910">P</font><font color="#46af38">E</font
+          ><font color="#fed302">R </font> <font color="#e42910">M</font
+          ><font color="#46af38">A</font><font color="#fed302">R</font
+          ><font color="#009fde">I</font><font color="#46af38">O</font>
+        </h1>
+      </div>
+      <div class="buttonContainer">
+        <div>
+          <button id="playButton" class="btn btn1">
+            <font color="#009fde">P</font><font color="#fed302">L</font
+            ><font color="#e42910">A</font><font color="#46af38">Y</font
+            ><font color="#fed302">!</font>
+          </button>
+        </div>
+
+        <br />
+
+        <div>
+          <button id="controlsButton" class="btn btn1">
+            <font color="#009fde">C</font><font color="#fed302">O</font
+            ><font color="#e42910">N</font><font color="#46af38">T</font
+            ><font color="#fed302">R</font><font color="#e42910">O</font
+            ><font color="#46af38">L</font><font color="#fed302">S</font>
+          </button>
+        </div>
+
+        <audio id="music" loop>
+          <source src="audio/supermariobrossoundtrack.mp3" />
+        </audio>
+        <div>
+          <i onclick="loadMusic(this)" class="fas fa-volume-mute"></i>
+        </div>
+      </div>
+
+      <!--Play button's modal-->
+      <div id="myModalPlay" class="modal-play">
+        <div class="modal-content-play">
+          <span class="close-play">&times;</span>
+          <br />
+
+          <div>
+            <div class="card" style="float: left; margin-right: 10px;">
+              <img src="./img/luigi.png" alt="Avatar" class="img" />
+              <div class="container-btn" align="center">
+                <button
+                  class="btn_card btn_card1"
+                  id="luigi"
+                  onclick="loadLuigiGame()"
+                >
+                  <font color="#009fde">L</font><font color="#fed302">U</font
+                  ><font color="#e42910">I</font><font color="#46af38">G</font
+                  ><font color="#fed302">I </font>
+                </button>
+              </div>
+            </div>
+            <div
+              class="card"
+              style="float: left; margin-left: 10px; margin-right: 10px;"
+            >
+              <img src="./img/mario.png" alt="Avatar" class="img" />
+              <div class="container-btn" align="center">
+                <button
+                  class="btn_card btn_card1"
+                  id="mario"
+                  onclick="loadMarioGame()"
+                >
+                  <font color="#009fde">M</font><font color="#fed302">A</font
+                  ><font color="#e42910">R</font><font color="#46af38">I</font
+                  ><font color="#fed302">O </font>
+                </button>
+              </div>
+            </div>
+            <div class="card" style="float: left; margin-left: 10px;">
+              <img src="./img/yoshi.png" alt="Avatar" class="img" />
+              <div class="container-btn" align="center">
+                <button
+                  class="btn_card btn_card1"
+                  id="yoshi"
+                  onclick="loadYoshiGame()"
+                >
+                  <font color="#009fde">Y</font><font color="#fed302">O</font
+                  ><font color="#e42910">S</font><font color="#46af38">H</font
+                  ><font color="#fed302">I</font>
+                </button>
+              </div>
+            </div>
+            <div style="clear: both;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!--Control button's modal-->
+      <div id="myModalControls" class="modal-controls">
+        <div class="modal-content-controls">
+          <span class="close-controls">&times;</span>
+          <div align="center" style="padding-top: 10%;">
+            <div style="float: left; width: 33%;" align="center">
+              <button class="controlsAD"><font color="#009fde">A</font></button>
+              <p>Move<br />Left</p>
+            </div>
+            <div style="float: left; width: 33%;" align="center">
+              <button class="controlsAD"><font color="#fed302">D</font></button>
+              <p>Move<br />Right</p>
+            </div>
+            <div style="float: left; width: 33%;" align="center">
+              <button class="controlsSpace">
+                <font color="#46af38">SPACE</font>
+              </button>
+              <p>Jump</p>
+            </div>
+            <div style="clear: both;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var modalPlay = document.getElementById("myModalPlay");
+      var btnPlay = document.getElementById("playButton");
+      var spanPlay = document.getElementsByClassName("close-play")[0];
+      btnPlay.onclick = function () {
+        modalPlay.style.display = "block";
+      };
+      spanPlay.onclick = function () {
+        modalPlay.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modalPlay) {
+          modalPlay.style.display = "none";
+        }
+      };
+    </script>
+
+    <script type="text/javascript">
+      function loadLuigiGame() {
+        sessionStorage.setItem("luigiPressed", "true");
+        sessionStorage.setItem("yoshiPressed", "false");
+        sessionStorage.setItem("marioPressed", "false");
+        window.location.href = "./game.html";
+      }
+    </script>
+
+    <script type="text/javascript">
+      function loadYoshiGame() {
+        sessionStorage.setItem("yoshiPressed", "true");
+        sessionStorage.setItem("luigiPressed", "false");
+        sessionStorage.setItem("marioPressed", "false");
+        window.location.href = "./game.html";
+      }
+    </script>
+
+    <script type="text/javascript">
+      function loadMarioGame() {
+        sessionStorage.setItem("marioPressed", "true");
+        sessionStorage.setItem("luigiPressed", "false");
+        sessionStorage.setItem("yoshiPressed", "false");
+        window.location.href = "./game.html";
+      }
+    </script>
+
+    <script type="text/javascript">
+      var modalControls = document.getElementById("myModalControls");
+      var btnControls = document.getElementById("controlsButton");
+      var spanControls = document.getElementsByClassName("close-controls")[0];
+      btnControls.onclick = function () {
+        modalControls.style.display = "block";
+      };
+      spanControls.onclick = function () {
+        modalControls.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modalControls) {
+          modalControls.style.display = "none";
+        }
+      };
+    </script>
+
+    <!-- Audio script -->
+    <script>
+      var isPlaying = false;
+      function loadMusic(x) {
+        x.classList.toggle("fa-volume-up");
+        if (!isPlaying) {
+          isPlaying = true;
+        } else {
+          isPlaying = false;
+        }
+        var audio = document.getElementById("music");
+        if (isPlaying) {
+          audio.volume = 0.5;
+          audio.play();
+        } else {
+          audio.volume = 0;
+        }
+      }
+    </script>
+  </body>
+</html>

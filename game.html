@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Super Mario Game</title>
+    <link rel="icon" type="image/png" href="img/marioIcon.png" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <link rel="stylesheet" href="css/game.css" />
+    <script
+      type="text/javascript"
+      src="build/three.js-master/build/three.js"
+    ></script>
+    <script src="build/Physijs/physi.js"></script>
+  </head>
+
+  <body>
+    <div class="container" id="loading">
+      <div class="load-text">
+        <p><font color="#009fde">L</font></p>
+        <p><font color="#fed302">O</font></p>
+        <p><font color="#e42910">A</font></p>
+        <p><font color="#46af38">D</font></p>
+        <p><font color="#fed302">I</font></p>
+        <p><font color="#e42910">N</font></p>
+        <p><font color="#46af38">G</font></p>
+      </div>
+    </div>
+    <div class="canvas_three" id="game" style="display: none;"></div>
+
+    <script>
+      setTimeout(loadingFunction.bind(null), 3000);
+
+      function loadingFunction() {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("game").style.display = "initial";
+        levelSound.play();
+        levelSound.volume = 0.2;
+      }
+    </script>
+
+    <script type="module" src="./js/yoshi.js"></script>
+    <script type="module" src="./js/luigi.js"></script>
+    <script type="module" src="./js/mario.js"></script>
+    <script type="module" src="index.js"></script>
+    <script type="module" src="./js/utils.js"></script>
+    <script type="text/javascript" src="./js/variables.js"></script>
+    <script type="module" src="./js/level_build.js"></script>
+    <script type="module" src="./js/collisions.js"></script>
+    <script type="module" src="./js/tween_functions.js"></script>
+    <script type="module" src="./js/goomba.js"></script>
+    <script type="module" src="./js/object.js"></script>
+    <script type="module" src="./js/pipe.js"></script>
+    <script type="module" src="./js/stairs.js"></script>
+    <script type="module" src="./js/bricks.js"></script>
+  </body>
+</html>
